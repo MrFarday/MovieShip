@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard/films', [DashboardController::class, 'store'])->name('dashboard.film.store');
     Route::get('/dashboard/film/edit/{id}', [DashboardController::class, 'edit'])->name('dashboard.film.edit');
     Route::patch('/dashboard/film/{film}', [DashboardController::class, 'update'])->name('dashboard.film.update');
-    Route::delete('/dashboard/film/{film}', [DashboardController::class, 'destroy'])->name('dashboard.film.destroy');
+    Route::delete('/dashboard/film/{id}', [DashboardController::class, 'destroy'])->name('dashboard.film.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

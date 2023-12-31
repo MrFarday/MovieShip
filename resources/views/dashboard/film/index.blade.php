@@ -86,7 +86,7 @@
                     </tr>
                 @endforeach
                 <x-modal name="confirm-user-deletion" focusable>
-                    <form method="post" action="{{ route('dashboard.film.destroy', $film->id) }} class="p-6">
+                    <form method="post" action="{{ route('dashboard.film.destroy', $film->id) }}" class="p-6">
                         @csrf
                         @method('delete')
                         <div class="container p-6">

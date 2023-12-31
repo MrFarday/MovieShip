@@ -70,9 +70,10 @@ class DashboardController extends Controller
         return view('dashboard.film.show', compact('film'));
     }
 
-    public function destroy(Film $film)
+    public function destroy($id)
     {
+        $film = Film::where('id', $id)->first();
         $film->delete();
-        return view('dashboard.film.index');
+        return redirect()->route('dashboard.films');
     }
 }
