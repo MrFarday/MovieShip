@@ -11,7 +11,7 @@
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Beranda') }}
                     </x-nav-link>
-                    <x-nav-link href="#">
+                    <x-nav-link href="{{ route('films') }}">
                         {{ __('Daftar Film') }}
                     </x-nav-link>
                     @if (Route::has('login'))
@@ -34,9 +34,11 @@
                 </div>
 
                 <div class="mt-4">
-                    <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                    <form action="{{ route('films') }}">
+                        <input type="text" name="search" id="first-name" autocomplete="given-name"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         placeholder="Cari">
+                    </form>
                 </div>
             </div>
 

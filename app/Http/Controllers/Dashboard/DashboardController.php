@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -26,27 +27,69 @@ class DashboardController extends Controller
 
     public function store(Request $request)
     {
-        return view('dashboard.film.store');
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $image->store('public/images');
+        } else {
+            $image = 'noimage.png';
+        }
+
+        $film = Film::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'release_year' => $request->release_year,
+            'length' => $request->length,
+            'rating' => $request->rating,
+            'user_id' => Auth::user()->id,
+            'image' => $image,
+        ]);
+
+        if ($film) {
+            return redirect()->route('dashboard.film.show', $film->id);
+        }
+
+        return view('dashboard.films');
     }
 
-    public function show(Film $film)
+    public function show($id)
     {
-        return view('dashboard.film.show');
+        $film = Film::where('id', $id)->first();
+        return view('dashboard.film.show', compact('film'));
     }
 
-    public function edit(Film $film)
+    public function edit($id)
     {
-        return view('dashboard.film.edit');
+        $film = Film::where('id', $id)->first();
+        return view('dashboard.film.edit', compact('film'));
     }
 
     public function update(Request $request, Film $film)
     {
-        return view('dashboard.film.update');
+
+        $film->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'release_year' => $request->release_year,
+            'length' => $request->length,
+            'rating' => $request->rating,
+            'user_id' => Auth::user()->id,
+        ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $image->store('public/images');
+            $film->update([
+                'image' => $image,
+            ]);
+        }
+
+        return view('dashboard.film.show', compact('film'));
     }
 
     public function destroy(Film $film)
     {
-
-        return view('dashboard.film.destroy');
+        $film->delete();
+        return view('dashboard.film.index');
     }
 }

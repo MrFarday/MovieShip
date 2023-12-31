@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->text('description');
             $table->year('release_year');
-            $table->smallInteger('length')->nullable();
+            $table->integer('length')->nullable();
             $table->enum('rating', ['G', 'PG', 'PG-13', 'R', 'NC-17'])->nullable();
             $table->string('thumbnail', 255)->nullable();
             $table->timestamp('last_update')->useCurrent();

@@ -17,15 +17,17 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/films', [HomeController::class, 'films'])->name('films');
+Route::get('/film/{film}', [HomeController::class, 'show'])->name('film.show');
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/films', [DashboardController::class, 'films'])->name('dashboard.films');
-    Route::get('/dashboard/film/{film}', [DashboardController::class, 'show'])->name('dashboard.film.show');
     Route::get('/dashboard/film/create', [DashboardController::class, 'create'])->name('dashboard.film.create');
+    Route::get('/dashboard/film/{id}', [DashboardController::class, 'show'])->name('dashboard.film.show');
     Route::post('/dashboard/films', [DashboardController::class, 'store'])->name('dashboard.film.store');
-    Route::get('/dashboard/film/{film}/edit', [DashboardController::class, 'edit'])->name('dashboard.film.edit');
+    Route::get('/dashboard/film/edit/{id}', [DashboardController::class, 'edit'])->name('dashboard.film.edit');
     Route::patch('/dashboard/film/{film}', [DashboardController::class, 'update'])->name('dashboard.film.update');
     Route::delete('/dashboard/film/{film}', [DashboardController::class, 'destroy'])->name('dashboard.film.destroy');
 

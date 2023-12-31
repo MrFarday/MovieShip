@@ -30,4 +30,19 @@ class HomeController extends Controller
         $randFilm = Film::where('id', $fgConnection->film_id)->paginate(6);
         return view('home', compact('latest', 'randGenre', 'randFilm'));
     }
+
+    public function films(Request $request)
+    {
+        $films = Film::latest()->paginate(12);
+        if ($request->has('search')) {
+            $films = Film::where('title', 'like', '%' . $request->search . '%')->paginate(12);
+        }
+
+        return view('film.index', compact('films'));
+    }
+
+    public function show(Film $film)
+    {
+        return view('film.show', compact('film'));
+    }
 }
