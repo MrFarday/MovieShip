@@ -43,10 +43,10 @@
                              <option value="NC-17" {{($film->rating === "NC-17")? 'selected': ''}}>NC-17</option>
                          </select>
                      </div>
-                      <div class="col-span-full">
+                      {{-- <div class="col-span-full">
                           <label for="thumbnail" class="text-sm font-medium text-gray-900 block mb-2">Thumbnail</label>
                           <input type="file" name="thumbnail" id="thumbnail" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Thumbnail" required>
-                      </div>
+                      </div> --}}
                   </div>
                   <div class="p-6 border-t border-gray-200 rounded-b">
                       <button class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit" name="submit">Edit Film</button>

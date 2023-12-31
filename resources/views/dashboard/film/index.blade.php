@@ -37,7 +37,7 @@
                     <tr
                         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <th class="hidden p-4 md:table-cell">
-                            <img src="{{ substr($film->thumbnail, 0, 4) === 'http' ? $film->thumbnail : asset('storage/' . $film->thumbnail) }}"
+                            <img src="https://source.unsplash.com/1200x800/?{{ $film->title }}"
                                 class="w-16 max-w-full max-h-full rounded-lg md:w-32" alt="image">
                         </th>
                         <th scope="row"

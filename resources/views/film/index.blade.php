@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="py-6 mx-auto w-full">
+    <div class="py-6 mx-auto">
         <div class="container py-6 mx-auto flex justify-center">
             <div class="px-4 mx-auto w-full">
                 <div class="space-y-8">
@@ -19,7 +19,7 @@
                                     {{ $film->id }}
                                 </x-slot>
                                 <x-slot name="image">
-                                    {{ $film->thumbnail }}
+                                    https://source.unsplash.com/1200x800/?{{ $film->title }}
                                 </x-slot>
                                 <x-slot name="title">
                                     {{ $film->title }}

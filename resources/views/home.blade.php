@@ -19,7 +19,7 @@
                                     {{ $film->id }}
                                 </x-slot>
                                 <x-slot name="image">
-                                    {{ $film->thumbnail }}
+                                    https://source.unsplash.com/1200x800/?{{ $film->title }}
                                 </x-slot>
                                 <x-slot name="title">
                                     {{ $film->title }}
@@ -51,7 +51,7 @@
                                     {{ $film->id }}
                                 </x-slot>
                                 <x-slot name="image">
-                                    {{ $film->thumbnail }}
+                                    https://source.unsplash.com/1200x800/?{{ $film->title }}
                                 </x-slot>
                                 <x-slot name="title">
                                     {{ $film->title }}

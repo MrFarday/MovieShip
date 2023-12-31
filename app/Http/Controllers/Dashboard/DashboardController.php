@@ -27,22 +27,13 @@ class DashboardController extends Controller
 
     public function store(Request $request)
     {
-
-        if ($request->hasFile('thumbnail')) {
-            $image = $request->file('thumbnail');
-            $image->store('public/images');
-        } else {
-            $image = 'noimage.png';
-        }
-
         $film = Film::create([
             'title' => $request->title,
             'description' => $request->description,
             'release_year' => $request->release_year,
             'length' => $request->length,
             'rating' => $request->rating,
-            'user_id' => Auth::user()->id,
-            'image' => $image,
+            'user_id' => Auth::user()->id
         ]);
 
         if ($film) {
@@ -75,14 +66,6 @@ class DashboardController extends Controller
             'rating' => $request->rating,
             'user_id' => Auth::user()->id,
         ]);
-
-        if ($request->hasFile('thumbnail')) {
-            $image = $request->file('thumbnail');
-            $image->store('public/images');
-            $film->update([
-                'image' => $image,
-            ]);
-        }
 
         return view('dashboard.film.show', compact('film'));
     }

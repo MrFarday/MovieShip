@@ -18,7 +18,6 @@ return new class extends Migration
             $table->year('release_year');
             $table->integer('length')->nullable();
             $table->enum('rating', ['G', 'PG', 'PG-13', 'R', 'NC-17'])->nullable();
-            $table->string('thumbnail', 255)->nullable();
             $table->timestamp('last_update')->useCurrent();
             $table->foreignId('user_id');
             $table->timestamps();

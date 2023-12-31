@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16">
+    <div class="max-w-screen-lg mx-auto p-5 sm:p-10 md:p-16 w-full">
 
         {{-- Tombol Kembali --}}
         <div class="flex justify-end mb-5">
@@ -20,7 +20,7 @@
 
             <div class="relative">
                 <a href="#">
-                    <img class="w-full" src="{{ $film->thumbnail }}" alt="Sunset in the mountains">
+                    <img class="w-full" src="https://source.unsplash.com/1200x800/?{{ $film->title }}" alt="Sunset in the mountains">
                 </a>
                 @if ($film->genres->count() > 0)
                 <a href="#"
